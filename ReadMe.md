@@ -8,6 +8,7 @@
 
 - [x] .NET 7
 - [x] DDD
+- [x] Mediator (CQRS)
 - [x] Serilog
 - [x] Fluent Validation
 - [x] EF Core
