@@ -261,6 +261,9 @@ $ ng build
 
 # Database
 
+- WebAPI: EF Core InMemory DB
+- Angular Client: db.json as mockDB for json-server
+
 # Test user data from webapi
 
 - Change setting in following file
