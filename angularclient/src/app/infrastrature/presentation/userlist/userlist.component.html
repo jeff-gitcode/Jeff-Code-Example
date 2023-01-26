@@ -1,0 +1,72 @@
+<div className="container pt-4 pb-4">
+  <div class="row">
+    <h1>Users</h1>
+  </div>
+
+  <button
+    (click)="createUser('')"
+    class="btn btn-primary"
+    style="margin-left: 10px"
+  >
+    New
+  </button>
+  <div *ngIf="data">
+    <p-table
+      [value]="data"
+      [paginator]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+          <th pSortableColumn="firstName">
+            First Name <p-sortIcon field="firstName"></p-sortIcon>
+          </th>
+          <th pSortableColumn="lastName">
+            Last Name <p-sortIcon field="lastName"></p-sortIcon>
+          </th>
+          <th>Action</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rawData>
+        <tr>
+          <td>{{ rawData.id }}</td>
+          <td>{{ rawData.firstName }}</td>
+          <td>{{ rawData.lastName }}</td>
+          <td>
+            <button (click)="updateUser(rawData.id)" class="btn btn-primary">
+              Update
+            </button>
+            <button
+              (click)="deleteUser(rawData.id)"
+              class="btn btn-danger"
+              style="margin-left: 10px"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+        <p-button
+          type="button"
+          icon="pi pi-plus"
+          styleClass="p-button-text"
+        ></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <p-button
+          type="button"
+          icon="pi pi-cloud"
+          styleClass="p-button-text"
+        ></p-button>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+<ng-container *ngIf="error$ | async as error">
+  <div>{{ error }}</div>
+</ng-container>

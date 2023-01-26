@@ -1,0 +1,5 @@
+@host = https://localhost:7271/WeatherForecast
+
+# @name WeatherForecast
+GET {{host}} HTTP/1.1
+content-type: application/json

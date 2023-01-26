@@ -1,0 +1,42 @@
+@host = https://localhost:7271/api/users
+# @host = http://localhost:5195/api/Users
+
+# @name createUser
+POST {{host}} HTTP/1.1
+content-type: application/json
+
+{
+  "id": "",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+
+### GET ALL USERS
+
+@commentId = {{createUser.response.body.id}}
+
+# @name GetUsers
+GET {{host}} HTTP/1.1
+content-type: application/json
+
+### GET USER BY ID
+# @name GetUserById
+GET {{host}}/{{commentId}} HTTP/1.1
+content-type: application/json
+
+### UPDATE USER
+# @name UpdateUser
+PUT {{host}} HTTP/1.1
+content-type: application/json
+
+{
+    "id": "{{commentId}}",
+    "firstName": "John update",
+    "lastName": "Doe"
+}
+
+### DELETE USER
+# @name DeleteUser
+DELETE {{host}}/{{commentId}} HTTP/1.1
+content-type: application/json
+
