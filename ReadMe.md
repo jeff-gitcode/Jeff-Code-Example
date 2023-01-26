@@ -2,6 +2,8 @@
 
 ![alt text](./Doc/system.jpg)
 
+![alt text](./Doc/code-example.gif)
+
 ## Tech Stack
 
 ## Backend
@@ -72,8 +74,6 @@
   ![alt text](./Doc/angular.JPG)
 
 # Backend Webapi Setup
-
-![alt text](./Doc/net-core-ca.jpg)
 
 1. Create new class library projects for backend , Domain, Application and Infrastructure
 
