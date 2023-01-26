@@ -46,7 +46,7 @@
 
 6. Change target. Then, go to the proxy.conf.js file for Angular project (look in the src folder). Update the target property to match the applicationUrl property in launchSettings.json.
 
-7. Please restore angular client by yarn if Rebuild solution fail by npm install. (only for the first time install when pull from github, please ignore this step if client is setup and restore already)
+7. Please restore angular client by **yarn install instead of npm install** if Rebuild solution fail. (only for the first time install when pull from github, please ignore this step if client is setup and restore already)
 
    - ./angularclient
    - $ yarn install
