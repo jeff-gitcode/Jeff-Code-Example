@@ -19,6 +19,7 @@
 ## Frontend
 
 - [x] Angular 15
+- [x] yarn
 - [x] Ngrx
 - [x] Rxjs
 - [x] Ngx formly form
@@ -44,10 +45,20 @@
 
 6. Change target. Then, go to the proxy.conf.js file for Angular project (look in the src folder). Update the target property to match the applicationUrl property in launchSettings.json.
 
-7. To start the project, press F5 or select the Start button at the top of the window. You will see two command prompts appear:
+7. Please restore angular client by yarn if Rebuild solution fail by npm install. (only for the first time install when pull from github, please ignore this step if client is setup and restore already)
+
+   - ./angularclient
+   - $ yarn install
+
+8. To start the project, press F5 or select the Start button at the top of the window. You will see two command prompts appear:
 
 - The ASP.NET Core API project running
-- The Angular CLI running the ng start command
+
+![alt text](./Doc/server.JPG)
+
+- The Angular CLI running the yarn start command
+
+![alt text](./Doc/client.JPG)
 
 8. Monitor - Logging
 
