@@ -314,6 +314,14 @@ http://localhost:8081/
 # mongodb driver
 $ dotnet add .\Infrastructure\ package MongoDB.Driver
 
+# appsettings.json/appsettings.Development.json, set EFCore=false
+
+  "MongoDB": {
+    "ConnectionString": "mongodb://root:password@localhost:27017",
+    "DatabaseName": "TestDB",
+    "UsersCollectionName": "UserMongo",
+    "EFCore": false
+  }
 ```
 
 ![alt text](./Doc/mongo.JPG)
