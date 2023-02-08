@@ -18,6 +18,7 @@
 - [x] Health Check
 - [x] Swagger
 - [x] Caching
+- [x] Mongodb
 
 ## Frontend
 
@@ -156,7 +157,8 @@
   <PrivateAssets>all</PrivateAssets>
 </PackageReference>
 <PackageReference Include="AutoFixture" Version="4.17.0" />
-<PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
+<PackageReference Include="AutoFixture.AutoMoq" Version
+="4.17.0" />
 <PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
 <PackageReference Include="FluentAssertions" Version="6.9.0" />
 <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.2" />
@@ -299,3 +301,19 @@ apiEndpoint: 'users',
 jsonFormUrl: 'http://localhost:3000',
 jsonFormEndpoint: 'jsonForm',
 ```
+
+## Mongo
+
+```powershell
+# install mongo username: root, password: password
+$ docker-compose up -d
+
+# mong express url
+http://localhost:8081/
+
+# mongodb driver
+$ dotnet add .\Infrastructure\ package MongoDB.Driver
+
+```
+
+![alt text](./Doc/mongo.JPG)

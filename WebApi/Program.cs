@@ -1,6 +1,7 @@
 
 using Application;
 using Infrastructure;
+using Infrastructure.Config;
 using Infrastructure.DB;
 using Serilog;
 
@@ -11,10 +12,14 @@ Log.Logger = new LoggerConfiguration()
 
 Log.Information("User Webapi starting up");
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
 
 // Add services to the container.
+// Add services to the container.
+builder.Services.Configure<MongoDBSettings>(
+    builder.Configuration.GetSection("MongoDB"));
+
 // add different layer
 builder.Services.ConfigureInfrastructureServices(builder.Configuration);
 
@@ -39,29 +44,29 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Seed Demo Database
-using (var scope = app.Services.CreateScope())
+using (IServiceScope scope = app.Services.CreateScope())
 {
-    var service = scope.ServiceProvider;
+    IServiceProvider service = scope.ServiceProvider;
 
     try
     {
-        var context = service.GetRequiredService<DBGenerator>();
+        DBGenerator context = service.GetRequiredService<DBGenerator>();
         await context.InitializeAsync();
     }
-    catch (Exception ex)
+    catch (Exception)
     {
-        throw ex;
+        throw;
     }
 }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    _ = app.UseSwagger();
+    _ = app.UseSwaggerUI();
 }
 
 // Log all requests
